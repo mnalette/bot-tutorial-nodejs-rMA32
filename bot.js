@@ -13,10 +13,16 @@ function respond() {
       botRegexProp = /^\/prop/;botRegexKys = /^\/kys/; botRegexSlam = /^\/slam/; botRegexBrye = /^\/brye/;
       botRegexGian = /^\/gian/; botRegexScrotes = /^\/scrotes/; botRegexShaki = /^\/shaki/; botRegexHype = /^\/hype/;
       botRegexDaf = /^\/dafuq/; botRegexMA32 = /^\/pending/; botRegexTrade = /^\/trade/; botRegexShady = /^\/shady/;
-      botRegex4thDown = /^\/4thdown/; botRegexStatCap = /^\/statcap/;
+      botRegex4thDown = /^\/4thdown/; botRegexStatCap = /^\/statcap/; botRegexMix = /^\/mixer/i;
       botRegexSchedule = /^\/schedule/;
       botRegexMulti = /^\/mstream/i;
       botRegexHelp = /^\/help/;
+      botSoftDoot = /^\/dootdootdoot/;
+      botDancingDoot = /^\/DootDoot/;
+      botCommList = /^\/commishinfo/;
+      botTCList = /^\/tcinfo/;
+      botRegexStatLeader = /^\/statboard/i;
+      botSportsBook = /^\/betline/;
       
       botRegexBitch = /^\/bitch/; botRegexGame = /^\/game/; botRegexBG = /^\/bg/; botRegexClown = /^\/clowning/; botRegexNoVance = /^\/novance/;
       siege1 = 'https://i.groupme.com/350x419.png.adc8c73a6c1547e0a9e04320296329f8'; siege2 = 'https://i.groupme.com/1279x752.jpeg.aa5d0401e0df495bba4b4e09dc5a6bd7'
@@ -24,21 +30,57 @@ function respond() {
   var teamAb = ["NE","NO","ARI","PHI","CLE","TEN","OAK","DAL","IND","SEA","CIN","PIT","JAC"
                 ,"BAL","SD","DEN","MIN","ATL","KC","NYG","GB","DET","HOU","STL","CHI","CAR",
                 "MIA","BUF","SF","WAS","NYJ","TB"]
+  
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage(cool());
     this.res.end();
   }
   
+  else if(request.text && botSportsBook.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("https://docs.google.com/spreadsheets/d/1wzofmsbLnydmpdXlspA19IKE33l-OQBwzNaq_kduNVM/edit?ts=5e89e1ad#gid=0");
+    this.res.end();
+  }
+    else if(request.text && botRegexStatLeader.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("http://daddyleagues.com/snd/stats/"+request.text.substring(11,request.text.length));
+    this.res.end();
+  }
+  
+   else if(request.text && botCommList.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("Commissioners. Contact for issues, questions:\n- Browns - Mikl \n- Buccanneers - Jay\n- Chiefs - Brad\n- Cowboys - Thomas\n- Redskins - Kenny");
+    this.res.end();
+  }
+  
+   else if(request.text && botTCList.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("Trade Committee Members:\n- Cowboys - Brad\n- Bills - Joao\n- 49ers - Michael\n- Ravens - Raza\n- Bengals - Kenny");
+    this.res.end();
+  } 
+  
+  else if(request.text && botDancingDoot.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("https://media.tenor.com/images/1970ddb19e0493351a4c0c13fa4cb401/tenor.gif");
+    this.res.end();
+  } 
+  
+  else if(request.text && botSoftDoot.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("https://media.giphy.com/media/Y2bmgFIyzz7r2/200.gif");
+    this.res.end();
+  } 
+  
   else if(request.text && botRegexHelp.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("HELP MENU\n ----DL Commands----\n -To view a specific team's schedule:\n/sdl [team abbreviation]\n -To view a specific team's depth chart:\n/ddl [team abbreviation]\n -To view the league's weekly schedule:\n /schedule\n -To view the league's current standings:\n /standings\n -To view a player or players based on name:\n /pdl [name]\n ----Trades/POS Changes/Suspensions----\n -To view trades, position changes, and suspensions:\n /trades\n ----Rules----\n -To view all rules\n /Rules\n -To view statcaps ad hoc:\n /statcap\n -To view 4th down rules ad hoc:\n /4thdown\n ----STREAMS----\n -To post a singular stream:\n/twitch [username] [short description optional]\n -To post multiple streams at once (platform doesn't matter):\n /mstream [username]/[username]\n NOTE: '/' between usernames is REQUIRED.\n ----FOR FUN----\n Just try them out:\n /duck\n /salt\n /game\n /bg\n /clowning\n /bitch");
+    postMessage("HELP MENU\n ----DL Commands----\n -To see current Commissioner Committee members: \n/commishinfo\n -To see current Trade Committee members: \n/tcinfo\n -To view team's schedule:\n/sdl [team abbreviation]\n -To view team's depth chart:\n/ddl [team abbreviation]\n -To view the league's weekly schedule:\n /schedule\n -To view the league's current standings:\n /standings\n -To view a player or players:\n /pdl [name]\n ----Trades/POS Changes/Suspensions----\n -To view trades, position changes, and suspensions:\n /trades\n ----Rules----\n -To view all rules\n /Rules\n -To view statcaps:\n /statcap\n -To view 4th down rules:\n /4thdown\n ----STREAMS----\n -To post one Twitch stream:\n/twitch [username] [short description optional]\n -To post one Mixer stream:\n/mixer [username]\n -To post multiple streams at once (platform doesn't matter):\n /mstream [username]/[username]\n NOTE: '/' between usernames is REQUIRED.\n ----FOR FUN----\n Just try them out:\n /duck\n /salt\n /game\n /bg\n /clowning\n /bitch");
     this.res.end();
   } 
   
    else if(request.text && botRegexSchedule.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("http://daddyleagues.com/sndv20/schedules");
+    postMessage("http://daddyleagues.com/snd/schedules");
     this.res.end();
   } 
   
@@ -114,17 +156,17 @@ function respond() {
   else if(request.text && botRegexDL.test(request.text)) {
     this.res.writeHead(200);
     //postMessage("http://www.daddyleagues.com/maddenrating?name=&position=all&team="+request.text.substring(5,8));
-    postMessage("http://daddyleagues.com/sndv20/team/"+request.text.substring(5,8)+"/depthchart");
+    postMessage("http://daddyleagues.com/snd/team/"+request.text.substring(5,8)+"/depthchart");
     this.res.end();
   } 
   else if(request.text && botRegexStandings.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("http://daddyleagues.com/sndv20/standings/league");
+    postMessage("http://daddyleagues.com/snd/standings/league");
     this.res.end();
   }
   else if(request.text && botRegexOW.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("www.daddyleagues.com/sndv20/maddenrating/");
+    postMessage("www.daddyleagues.com/snd/maddenrating/");
     this.res.end();
   }
   else if(request.text && botRegexSalt.test(request.text)) {
@@ -144,7 +186,7 @@ function respond() {
   }
   else if(request.text && botRegexRules.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("http://daddyleagues.com/sndv20/rules");
+    postMessage("http://daddyleagues.com/snd/rules");
     this.res.end();
   } 
   else if(request.text && botRegexGTA.test(request.text)) {
@@ -155,14 +197,14 @@ function respond() {
   else if(request.text && botRegexSC.test(request.text)) {
     this.res.writeHead(200);
     
-    postMessage("http://daddyleagues.com/sndv20/team/"+request.text.substring(5,8)+"/schedule");
+    postMessage("http://daddyleagues.com/snd/team/"+request.text.substring(5,8)+"/schedule");
     this.res.end();
   }
   else if(request.text && botRegexP.test(request.text)) {
     this.res.writeHead(200);
     var req = request.text.substring(5,request.text.length);
     var rep = req.replace(/ /,"+");
-    postMessage("http://daddyleagues.com/sndv20/players?name="+rep+"&position=all&team=all");
+    postMessage("http://daddyleagues.com/snd/players?name="+rep+"&position=all&team=all");
     this.res.end();
   }  
   
@@ -202,6 +244,12 @@ function respond() {
     this.res.end();
   } 
   
+    else if(request.text && botRegexMix.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("http://www.mixer.com/"+request.text.substring(8,request.text.length));
+    this.res.end();
+  } 
+
   else if(request.text && botRegexBG.test(request.text)) {
     this.res.writeHead(200);
     postMessage("https://i.kym-cdn.com/photos/images/original/000/802/696/6c6.jpg")
@@ -245,7 +293,7 @@ function respond() {
   }
   else if(request.text && botRegexTrade.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("https://docs.google.com/spreadsheets/d/18PZw2vDy3W_XBkLhtwswTLZDI6iyv5axR4d0mNZENDo/edit#gid=196547554");
+    postMessage("https://docs.google.com/spreadsheets/d/1IHU40e5cENegADwlVOTuZilNCgYlAIKBQ4hv4wW1MhA/edit#gid=0");
     this.res.end();
   }
   
