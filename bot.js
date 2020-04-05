@@ -50,7 +50,7 @@ function respond() {
   
    else if(request.text && botCommList.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("Commissioners. Contact for issues, questions:\n- Browns - Mikl \n- Buccanneers - Jay\n- Chiefs - Brad\n- Cowboys - Thomas\n- Redskins - Kenny");
+    postMessage("Commissioners. Contact for issues, questions:\n- Cowboys - Brad \n- 49ers - Michael\n- Bills - Joao\n- Ravens - Raza");
     this.res.end();
   }
   
