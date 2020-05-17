@@ -293,7 +293,7 @@ function respond() {
   }
   else if(request.text && botRegexTrade.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("https://docs.google.com/spreadsheets/d/1IHU40e5cENegADwlVOTuZilNCgYlAIKBQ4hv4wW1MhA/edit#gid=0");
+    postMessage("https://docs.google.com/spreadsheets/d/1wzofmsbLnydmpdXlspA19IKE33l-OQBwzNaq_kduNVM/edit?ts=5e89e1ad#gid=699019273");
     this.res.end();
   }
   
